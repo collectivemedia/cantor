@@ -7,10 +7,17 @@
   <version>1.0.0</version>
 
   <properties>
-    <hadoop.version>2.2.0</hadoop.version>
+    <hadoop.version>2.5.0-cdh5.3.1</hadoop.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <aws-java-sdk.version>1.8.11</aws-java-sdk.version>
   </properties>
+
+  <repositories>
+    <repository>
+      <id>Cloudera</id>
+      <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+    </repository>
+  </repositories>
 
   <build>
     <finalName>${project.artifactId}</finalName>
@@ -34,46 +41,6 @@
       </plugin>
     </plugins>
   </build>
-  
-  <profiles>
-    <profile>
-      <id>main</id>
-      <activation>
-	<activeByDefault>true</activeByDefault>
-      </activation>
-      <build>
-	<plugins>
-	  <plugin>
-	    <!-- We use shade because sometimes LICENSE files
-		 cause issues on MacOS X, depending on whether
-		 the filesystem is case-sensitive. -->
-	    <groupId>org.apache.maven.plugins</groupId>
-	    <artifactId>maven-shade-plugin</artifactId>
-	    <version>2.2</version>
-	    <executions>
-	      <execution>
-		<phase>package</phase>
-		<goals>
-		  <goal>shade</goal>
-		</goals>
-		<configuration>
-		  <createDependencyReducedPom>false</createDependencyReducedPom>
-		  <filters>
-		    <filter>
-		      <artifact>*:*</artifact>
-		      <excludes>
-			<exclude>**/LICENSE*</exclude>
-		      </excludes>
-		    </filter>
-		  </filters>
-		</configuration>
-	      </execution>
-	    </executions>
-	  </plugin>
-	</plugins>
-      </build>
-    </profile>
-  </profiles>
 
   <dependencies>
     <dependency>
@@ -93,5 +60,18 @@
       <version>${hadoop.version}</version>
     </dependency>
   </dependencies>
+
+  <distributionManagement>
+    <repository>
+      <id>collective-public</id>
+      <name>Collective Public Repository</name>
+      <url>http://nexus.collective-media.net/content/groups/public/</url>
+    </repository>
+    <snapshotRepository>
+      <id>collective-public</id>
+      <name>Collective Public Repository</name>
+      <url>http://nexus.collective-media.net/content/groups/public/</url>
+    </snapshotRepository>
+  </distributionManagement>
 
 </project>
