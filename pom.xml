@@ -76,12 +76,12 @@
 
     <distributionManagement>
         <repository>
-            <id>collective-public</id>
+            <id>Collective Releases</id>
             <name>Collective Releases Repository</name>
             <url>http://nexus001.ewr1.collective-media.net:8081/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
-            <id>collective-public</id>
+            <id>Collective Snapshots</id>
             <name>Collective Snapshots Repository</name>
             <url>http://nexus001.ewr1.collective-media.net:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
