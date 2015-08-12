@@ -64,3 +64,7 @@ Error at k:	       0.25
 ```
 
 Additional information is available with `./utils/minhash_k.py --help`.
+
+### Publish to Bintray
+
+Bintray publishing setup: http://veithen.github.io/2013/05/26/github-bintray-maven-release-plugin.html
